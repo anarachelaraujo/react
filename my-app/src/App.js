@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+function Form({ fields }) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Field name={fields[0].name} />
+      <Field name={fields[1].name} />
+      <Field name={fields[2].name} />
+      <Button />
     </div>
   );
 }
 
-export default App;
+function Field({ name }) {
+  return (
+    <p>
+      <input type="text" placeholder={name} />
+    </p>
+  );
+}
+
+function Button() {
+  return (
+    <p>
+      <button type="button">Submit</button>
+    </p>
+  );
+}
+
+const FIELDS = [{ name: "Name" }, { name: "Address" }, { name: "Phone" }];
+
+export default function App() {
+  return <Form fields={FIELDS} />;
+}
